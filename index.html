@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <title>Weather App</title>
 </head>  
 <body>
     <div class="weather-container">
-        <img class="icon">
-        <p class="weather"></p>
-        <p class="temp"></p>
+        <div class="input-group mb-3">
+            <input id="input" type="text" class="form-control" placeholder="City Name" aria-label="City Name" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button id="btn" class="btn btn-outline-info" type="button" id="button-addon2">Check the weather</button>
+            </div>
+        </div>
+        <div id="weather"></div>
     </div>
     <script src="script.js"></script>
 </body>

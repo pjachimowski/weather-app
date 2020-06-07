@@ -1,0 +1,10 @@
+.weather-container {
+    padding: 150px;
+    background: rgb(181, 234, 255);
+    text-align: center;
+}
+
+#weather {
+    font-size: 22px;
+    margin:  0px;
+}
