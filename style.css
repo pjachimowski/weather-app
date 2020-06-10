@@ -1,6 +1,6 @@
 .weather-container {
     padding: 150px;
-    background: rgb(181, 234, 255);
+    background: rgb(168, 230, 255);
     text-align: center;
     font-family: 'Russo One', sans-serif;
 }
@@ -12,6 +12,12 @@
 #weather {
     font-size: 22px;
     margin:  0px;
+}
+
+#details {
+    color: aliceblue;
+    font-family: 'Roboto Mono', monospace;
+    font-size: small;
 }
 
 .flag {
@@ -26,5 +32,9 @@
 #rmv:hover {
     cursor: pointer;
     color: rgb(111, 180, 199);
+}
+
+p {
+    color: rgb(63, 163, 185);
 }
 

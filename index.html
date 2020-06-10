@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
             integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <title>Weather App</title>
@@ -14,6 +15,7 @@
 <body>
     <div class="weather-container">
         <div class="row">
+            <div id="date"></div>
             <div class="input-group mb-3">
                 <input id="input" type="text" class="form-control" placeholder="City Name" aria-label="City Name" aria-describedby="button-addon2">
                 <div class="input-group-append">
@@ -27,10 +29,12 @@
                 <div id="weather"></div>
             </div>
             <div class="col">
-                <p>date</p>
-                <div id="date"></div>
+                <p>Details</p>
+                <div id="details"></div>
             </div>
+            
         </div>
+        <div id="hr"><hr></div>
     </div>
     <script src="script.js"></script>
 </body>

@@ -1,7 +1,9 @@
 const btn = document.querySelector('#btn');
-let weather = document.getElementById('weather');
-let rmv = document.getElementById('rmv');
-let date = document.getElementById('date');
+const weather = document.getElementById('weather');
+const rmv = document.getElementById('rmv');
+const date = document.getElementById('date');
+const details = document.getElementById('details');
+const hr = document.getElementById('hr');
 
 // Ajax request
 function getJSON(url, callback){
@@ -30,8 +32,8 @@ function getDate(){
     let yyyy = today.getFullYear();
     today = mm + '/' + dd + '/' + yyyy;
     date.innerHTML = today;
-    console.log(today);
 }
+getDate();
 
 function generateHTML(data) {
     let icon = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
@@ -42,17 +44,30 @@ function generateHTML(data) {
         <img src="${icon}">
         <p>${temperatureConverter(data.main.temp)} °C </p>
         <p>${data.weather[0].main}</p>
-        <hr>
         `;
+    
+}
+
+function generateWikiHTML(data) {
+    const section = document.createElement('section');
+    details.appendChild(section);
+    section.innerHTML =`<div>
+    ${data.extract}</div><br>
+    ` ;
 }
 
 btn.addEventListener('click', () => {
     city = document.getElementById('input').value;
     const weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=de9ece9dcc2535fc84dcb82e9fb330de';
     getJSON(weatherUrl, generateHTML);
-    getDate();
+
+    let wikiUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/' + city;
+    getJSON(wikiUrl, generateWikiHTML);
+    hr.innerHTML = '<hr>';
+
 });
 
 rmv.addEventListener('click', () => {
     weather.innerHTML = '';
+    details.innerHTML = '';
 });
