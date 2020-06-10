@@ -2,9 +2,29 @@
     padding: 150px;
     background: rgb(181, 234, 255);
     text-align: center;
+    font-family: 'Russo One', sans-serif;
+}
+#date {
+    font-size: xx-large;
+    color: aliceblue;
 }
 
 #weather {
     font-size: 22px;
     margin:  0px;
 }
+
+.flag {
+    height: 20px;
+}
+
+#rmv {
+    margin-left: 30px;;
+    color: aliceblue;
+    font-size: xx-large;
+}
+#rmv:hover {
+    cursor: pointer;
+    color: rgb(111, 180, 199);
+}
+

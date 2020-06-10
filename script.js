@@ -1,8 +1,7 @@
-// let city = document.getElementById('input').value;
-
-const weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Amsterdam&appid=de9ece9dcc2535fc84dcb82e9fb330de';
 const btn = document.querySelector('#btn');
-const weather = document.getElementById('weather');
+let weather = document.getElementById('weather');
+let rmv = document.getElementById('rmv');
+let date = document.getElementById('date');
 
 // Ajax request
 function getJSON(url, callback){
@@ -19,9 +18,19 @@ function getJSON(url, callback){
 }
 
 function temperatureConverter(val) {
-    val = parseFloat(val);
-    val = (val-32) / 1.8;
-    return val;
+    let kalv = val-273.15;
+    kalv = kalv.toFixed(1);
+    return (kalv);
+}
+
+function getDate(){
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+    today = mm + '/' + dd + '/' + yyyy;
+    date.innerHTML = today;
+    console.log(today);
 }
 
 function generateHTML(data) {
@@ -29,29 +38,21 @@ function generateHTML(data) {
     const section = document.createElement('section');
     weather.appendChild(section);
     section.innerHTML = `
-        <h2>${data.name}</h2>
+        <h2> <img class="flag" alt="United States" src="http://catamphetamine.gitlab.io/country-flag-icons/3x2/${data.sys.country}.svg"/> ${data.name}  </h2>
         <img src="${icon}">
         <p>${temperatureConverter(data.main.temp)} °C </p>
-        <p>${data.weather[0].main}</p>`;
+        <p>${data.weather[0].main}</p>
+        <hr>
+        `;
 }
 
 btn.addEventListener('click', () => {
+    city = document.getElementById('input').value;
+    const weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=de9ece9dcc2535fc84dcb82e9fb330de';
     getJSON(weatherUrl, generateHTML);
+    getDate();
 });
 
-/**
- * jQuery here create seperate version add better html
- */
-// let city = prompt("Select city");
-
-// $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=de9ece9dcc2535fc84dcb82e9fb330de", 
-// function(data){
-//     console.log(data);
-//     let icon = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-//     let temp = data.main.temp;
-//     let weather = data.weather[0].main;
-
-//     $('.icon').attr("src", icon);
-//     $('.temp').append(temp);
-//     $('.weather').append(weather);
-// })
+rmv.addEventListener('click', () => {
+    weather.innerHTML = '';
+});
